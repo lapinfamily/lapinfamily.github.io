@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lapin Family Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #1e1b4b 0%, #07031a 70%);
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 60px;
+}
+
+h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  color: #ffdd4a;
+  text-shadow: 0 0 20px rgba(255,220,50,0.6);
+  text-align: center;
+}
+
+.tagline {
+  margin: 8px 0 36px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 700;
+  text-align: center;
+}
+
+.games {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 20px;
+  border-radius: 24px;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.3), 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.15s;
+}
+
+.game:hover  { transform: translateY(-3px); }
+.game:active { transform: translateY(3px); }
+
+.ninja    { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
+.gematria { background: linear-gradient(135deg, #6366f1, #4c1d95); }
+
+.icon { font-size: 3rem; line-height: 1; }
+
+.game h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+
+.game p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+</style>
+</head>
+<body>
+  <h1>Lapin Family Games</h1>
+  <p class="tagline">Pick a game and start playing!</p>
+
+  <div class="games">
+    <a class="game ninja" href="/ninjamath/">
+      <span class="icon">🥷</span>
+      <div>
+        <h2>Ninja Math Dojo</h2>
+        <p>Addition and subtraction practice</p>
+      </div>
+    </a>
+
+    <a class="game gematria" href="/gematria/">
+      <span class="icon">✨</span>
+      <div>
+        <h2>Gematria Stars</h2>
+        <p>Hebrew letters and their number values</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- To add a game: copy one of the <a class="game"> blocks above,
+       change the href to /your-repo-name/, and pick an emoji, title, and blurb. -->
+</body>
+</html>
