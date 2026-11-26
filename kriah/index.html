@@ -153,6 +153,7 @@ const V=[
 ];
 const VI=Object.fromEntries(V.map(x=>[x.id,x]));
 const TRV={a:'ah',aw:'aw',i:'ee',e:'eh',o:'oh',u:'oo'};
+const VO={a:'ah',aw:'aw',i:'e',e:'eh',o:'oh',u:'ooh'};
 const HEV={aw:'וֹ',a:'ָה',i:'ִי',e:'ֶה',o:'וֹ',u:'וּ'};
 
 /* ---------- words (Black belt) ---------- */
@@ -195,7 +196,7 @@ function syl(l,v,isNew){
   const key=s==='aw'&&mode()==='he'?'o':s;
   return {key:'s:'+l.id+':'+v.id,L:l.id,V:v.id,disp:l.ch+v.m+(v.t||''),snd:ls+'|'+key,isNew,
     tr:v.id==='sheva'?(lt?lt+"'":"'"):(lt+TRV[s]),note:v.quick?'quick sound':'',
-    he:lh+HEV[s],en:v.id==='sheva'?(le+'uh'):(le+TRV[s])};
+    he:lh+HEV[s],vo:!le,en:!le?VO[s]:v.id==='sheva'?(le+'uh'):(le+TRV[s])};
 }
 let POOLS={};
 function rebuild(){POOLS={};recent=[];buildWords()}
@@ -229,7 +230,8 @@ const enV=()=>voices.filter(v=>/^en/i.test(v.lang));
 function mode(){if(!hasTTS)return 'none';if(P.set.mode!=='auto')return P.set.mode;return heV().length?'he':'en'}
 function voiceFor(m){const list=m==='he'?heV():enV();return list.find(v=>v.voiceURI===P.set.voice)||list.find(v=>/en-US/.test(v.lang))||list[0]||null}
 function say(it){
-  const m=mode();if(m==='none')return false;
+  let m=mode();if(m==='none')return false;
+  if(it.vo&&m==='he'&&enV().length)m='en';
   try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(m==='he'?it.he:it.en);const v=voiceFor(m);if(v)u.voice=v;u.lang=v?v.lang:(m==='he'?'he-IL':'en-US');u.rate=P.set.rate;speechSynthesis.speak(u);return true}catch(e){return false}
 }
 let ac;
