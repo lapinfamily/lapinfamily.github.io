@@ -29,8 +29,6 @@ header{background:var(--red);color:#fff8ec;position:relative;overflow:hidden}
 .bar .sp{flex:1}
 .stars{display:flex;align-items:center;gap:6px;font-weight:700;font-size:20px;background:rgba(0,0,0,.18);padding:6px 12px;border-radius:999px}
 .gear{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.18);position:relative}
-.gear.holding::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid #fff8ec;animation:hold 1.4s linear forwards;clip-path:inset(0 0 0 0)}
-@keyframes hold{from{opacity:.2;transform:scale(.8)}to{opacity:1;transform:scale(1.05)}}
 .hero{max-width:760px;margin:0 auto;padding:4px 16px 26px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px}
 .hero h1{margin:0;font-size:clamp(30px,6vw,46px);line-height:1.05;text-wrap:balance}
 .hero p{margin:6px 0 0;opacity:.9;max-width:34ch}
@@ -115,7 +113,7 @@ select,input[type=range]{width:100%;font:inherit;font-size:16px;min-height:44px;
     <button class="home" id="homeBtn" aria-label="Back to the dojo">Kriah Dojo</button>
     <span class="sp"></span>
     <span class="stars" aria-label="Stars"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#f2c230" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><span id="starN">0</span></span>
-    <button class="gear" id="gear" aria-label="Grown-up settings (press and hold)"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.3 7.3 0 0 0-1.7-1L15 3h-4l-.4 2.7a7.3 7.3 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1L11 21h4l.4-2.7c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button>
+    <button class="gear" id="gear" aria-label="Grown-up settings"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.3 7.3 0 0 0-1.7-1L15 3h-4l-.4 2.7a7.3 7.3 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1L11 21h4l.4-2.7c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button>
   </div>
   <div class="hero" id="hero">
     <div><h1>Earn your belts in reading</h1><p>Each belt is a group of nekudos. Get 18 of the last 20 right to earn it.</p></div>
@@ -393,11 +391,14 @@ function settings(){
 
 /* ---------- header ---------- */
 $('#homeBtn').onclick=home;
-const gear=$('#gear');let ht=null;
-const hs=e=>{e.preventDefault();gear.classList.add('holding');ht=setTimeout(()=>{gear.classList.remove('holding');settings()},1400)};
-const he_=()=>{clearTimeout(ht);gear.classList.remove('holding')};
-gear.addEventListener('pointerdown',hs);['pointerup','pointerleave','pointercancel'].forEach(t=>gear.addEventListener(t,he_));
-gear.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();settings()}});
+$('#gear').onclick=()=>{
+  const a=6+Math.floor(Math.random()*4),b=6+Math.floor(Math.random()*4);
+  const d=document.createElement('div');d.className='ceremony';
+  d.innerHTML=`<form class="card" id="gate" style="min-width:280px"><h2>Grown-ups only</h2><label for="ga">What is ${a} × ${b}?</label><input id="ga" type="number" inputmode="numeric" autocomplete="off" style="width:100%;font:inherit;font-size:24px;min-height:52px;padding:8px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);text-align:center"><p class="note" id="gm" style="min-height:24px"></p><div class="row" style="justify-content:center"><button class="big go" type="submit">Open settings</button><button class="ghost" type="button" id="gc">Cancel</button></div></form>`;
+  document.body.appendChild(d);const inp=d.querySelector('#ga');inp.focus();
+  d.querySelector('#gc').onclick=()=>d.remove();
+  d.querySelector('#gate').onsubmit=e=>{e.preventDefault();if(+inp.value===a*b){d.remove();settings()}else{d.querySelector('#gm').textContent='Not quite. Try again.';inp.value='';inp.focus()}};
+};
 $('#starN').textContent=P.stars;
 home();
 }
