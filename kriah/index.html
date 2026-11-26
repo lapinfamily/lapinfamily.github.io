@@ -152,47 +152,53 @@ const V=[
 {id:'chatafP',m:'ֲ',s:'a',n:'Chataf patach',quick:1,gutOnly:1},{id:'chatafS',m:'ֱ',s:'e',n:'Chataf segol',quick:1,gutOnly:1},{id:'chatafK',m:'ֳ',s:'o',n:'Chataf kamatz',quick:1,gutOnly:1}
 ];
 const VI=Object.fromEntries(V.map(x=>[x.id,x]));
-const TRV={a:'ah',i:'ee',e:'eh',o:'oh',u:'oo'};
-const HEV={a:'ָה',i:'ִי',e:'ֶה',o:'וֹ',u:'וּ'};
+const TRV={a:'ah',aw:'aw',i:'ee',e:'eh',o:'oh',u:'oo'};
+const HEV={aw:'וֹ',a:'ָה',i:'ִי',e:'ֶה',o:'וֹ',u:'וּ'};
 
 /* ---------- words (Black belt) ---------- */
 const W=[
-['שָׁלוֹם','sha-lohm','shah lome','👋','hello, peace'],['כֶּלֶב','keh-lev','keh lev','🐕','dog'],['דָּג','dahg','dahg','🐟','fish'],
-['יָד','yahd','yahd','✋','hand'],['סֵפֶר','seh-fer','seh fair','📖','book'],['בַּיִת','bah-yis','bah yiss','🏠','house'],
-['יֶלֶד','yeh-led','yeh led','👦','boy'],['אַבָּא','ah-bah','ah bah','👨','Abba'],['אִמָּא','ee-mah','ee mah','👩','Ima'],
+['שָׁלוֹם','shA-lohm','shA lome','👋','hello, peace'],['כֶּלֶב','keh-lev','keh lev','🐕','dog'],['דָּג','dAg','dAg','🐟','fish'],
+['יָד','yAd','yAd','✋','hand'],['סֵפֶר','seh-fer','seh fair','📖','book'],['בַּיִת','bah-yiS','bah yiS','🏠','house'],
+['יֶלֶד','yeh-led','yeh led','👦','boy'],['אַבָּא','ah-bA','ah bA','👨','Abba'],['אִמָּא','ee-mA','ee mA','👩','Ima'],
 ['מַיִם','mah-yim','mah yeem','💧','water'],['לֶחֶם','leh-chem','leh khem','🍞','bread'],['שֶׁמֶשׁ','sheh-mesh','sheh mesh','☀️','sun'],
 ['סוּס','soos','soose','🐴','horse'],['עֵץ','etz','ets','🌳','tree'],['פֶּרַח','peh-rach','peh rahkh','🌸','flower'],
-['חָלָב','chah-lahv','khah lahv','🥛','milk'],['גָּמָל','gah-mahl','gah mahl','🐫','camel'],['אֲרִי','ah-ree','ah ree','🦁','lion'],
-['כּוֹכָב','koh-chahv','koh khahv','⭐','star'],['שַׁבָּת','shah-bahs','shah bahss','🍷','Shabbos'],['נֵר','nehr','nair','🕯️','candle'],
-['תּוֹרָה','toh-rah','toe rah','📜','Torah'],['בְּרָכָה','b\'rah-chah','brah khah','🙏','bracha'],['סֻכָּה','soo-kah','soo kah','🛖','sukkah'],
-['מְנוֹרָה','m\'noh-rah','mnoh rah','🕎','menorah'],['כִּסֵּא','kee-seh','kee seh','🪑','chair'],['עוּגָה','oo-gah','oo gah','🎂','cake'],
+['חָלָב','chA-lAv','khA lAv','🥛','milk'],['גָּמָל','gA-mAl','gA mAl','🐫','camel'],['אֲרִי','ah-ree','ah ree','🦁','lion'],
+['כּוֹכָב','koh-chAv','koh khAv','⭐','star'],['שַׁבָּת','shah-bAS','shah bAS','🍷','Shabbos'],['נֵר','nehr','nair','🕯️','candle'],
+['תּוֹרָה','toh-rA','toe rA','📜','Torah'],['בְּרָכָה','b\'rA-chA','brA khA','🙏','bracha'],['סֻכָּה','soo-kA','soo kA','🛖','sukkah'],
+['מְנוֹרָה','m\'noh-rA','mnoh rA','🕎','menorah'],['כִּסֵּא','kee-seh','kee seh','🪑','chair'],['עוּגָה','oo-gA','oo gA','🎂','cake'],
 ['דֻּבִּי','doo-bee','doo bee','🧸','teddy bear'],['רֶגֶל','reh-gel','reh gell','🦶','foot'],['אֹזֶן','oh-zen','oh zen','👂','ear'],
-['פִּיל','peel','peel','🐘','elephant'],['דְּבוֹרָה','d\'voh-rah','dvoh rah','🐝','bee'],['גֶּשֶׁם','geh-shem','geh shem','🌧️','rain'],
-['מוֹדֶה אֲנִי','moh-deh ah-nee','moh deh ah nee','🌅','Modeh Ani'],['שְׁמַע יִשְׂרָאֵל','sh\'mah yis-rah-el','shmah yiss rah ell','✨','Shema Yisrael'],['בָּרוּךְ אַתָּה','bah-rooch ah-tah','bah rookh ah tah','🙌','Baruch Atah']
+['פִּיל','peel','peel','🐘','elephant'],['דְּבוֹרָה','d\'voh-rA','dvoh rA','🐝','bee'],['גֶּשֶׁם','geh-shem','geh shem','🌧️','rain'],
+['מוֹדֶה אֲנִי','moh-deh ah-nee','moh deh ah nee','🌅','Modeh Ani'],['שְׁמַע יִשְׂרָאֵל','sh\'mah yis-rA-el','shmah yiss rA ell','✨','Shema Yisrael'],['בָּרוּךְ אַתָּה','bA-rooch ah-tA','bA rookh ah tA','🙌','Baruch Atah']
 ];
 function sav(w){const a=[...w];let o='';for(let i=0;i<a.length;i++){let c=a[i];if(c==='ת'){let j=i+1,d=false;while(j<a.length&&/[֑-ׇ]/.test(a[j])){if(a[j]==='ּ')d=true;j++}if(!d)c='ס'}o+=c}return o}
-const WORDS=W.map((w,i)=>({key:'w:'+i,word:1,disp:w[0],tr:w[1],en:w[2],pic:w[3],mean:w[4],he:sav(w[0]),snd:'w'+i,isNew:true}));
+const WORDS=[];
+const KAW=()=>P.set.kam==='aw',SAV=()=>P.set.sav!==false;
+const tok=s=>s.replace(/A/g,KAW()?'aw':'ah').replace(/S/g,SAV()?'s':'t');
+function buildWords(){WORDS.length=0;W.forEach((w,i)=>WORDS.push({key:'w:'+i,word:1,disp:w[0],tr:tok(w[1]),en:tok(w[2]),pic:w[3],mean:w[4],he:SAV()?sav(w[0]):w[0],snd:'w'+i,isNew:true}))}
 
 /* ---------- belts ---------- */
 const BELTS=[
-{id:'white',name:'White belt',c:'#f4f1ea',nv:['kamatz','patach'],tip:'Kamatz (a little T) and patach (a line) both say "ah".'},
+{id:'white',name:'White belt',c:'#f4f1ea',nv:['kamatz','patach'],tip:()=>KAW()?'Kamatz (a little T) says "aw". Patach (a line) says "ah".':'Kamatz (a little T) and patach (a line) both say "ah".'},
 {id:'yellow',name:'Yellow belt',c:'#f2c230',nv:['chirik','chirikY'],tip:'Chirik is one dot under the letter and says "ee". A yud after it stays quiet.'},
 {id:'orange',name:'Orange belt',c:'#ee7d22',nv:['segol','tzeirei','tzeireiY'],tip:'Segol (three dots) and tzeirei (two dots side by side) say "eh". A yud after tzeirei stays quiet.'},
 {id:'green',name:'Green belt',c:'#3a9a4b',nv:['cholam','cholamV'],tip:'Cholam is a dot up top and says "oh". A vav with a dot on its head also says "oh".'},
 {id:'blue',name:'Blue belt',c:'#2d6cdf',nv:['kubutz','shuruk'],tip:'Kubutz (three slanted dots) and shuruk (a vav with a dot in its belly) say "oo".'},
 {id:'purple',name:'Purple belt',c:'#7b4bc4',nv:['sheva','chatafP','chatafS','chatafK'],tip:'Sheva (two dots stacked) at the start is a quick "eh". The chataf vowels are quick vowels that live under א ה ח ע.'},
-{id:'brown',name:'Brown belt',c:'#7a4a26',pairs:true,tip:'Dot or no dot? בּ b, ב v. כּ k, כ ch. פּ p, פ f. תּ t, ת s. Shin dot on the right says sh, on the left says s.'},
+{id:'brown',name:'Brown belt',c:'#7a4a26',pairs:true,tip:()=>'Dot or no dot? בּ b, ב v. כּ k, כ ch. פּ p, פ f. תּ t, ת '+(SAV()?'s':'t (same sound)')+'. Shin dot on the right says sh, on the left says s.'},
 {id:'black',name:'Black belt',c:'#151515',words:true,tip:'Real words and siddur words. Read the whole word, then check.'}
 ];
 const ALLV=BELTS.flatMap(b=>b.nv||[]);
 function ok(l,v){if(v.gutOnly&&!l.gut)return false;if(v.noGut&&l.gut)return false;if(l.id==='vav'&&v.id==='cholam')return false;return true}
 function syl(l,v,isNew){
-  const s=v.s;
-  return {key:'s:'+l.id+':'+v.id,L:l.id,V:v.id,disp:l.ch+v.m+(v.t||''),snd:l.snd+'|'+s,isNew,
-    tr:v.id==='sheva'?(l.tr?l.tr+"'":"'"):(l.tr+TRV[s]),note:v.quick?'quick sound':'',
-    he:(l.he)+HEV[s],en:v.id==='sheva'?(l.en+'uh'):(l.en+TRV[s])};
+  let s=v.s;if(v.id==='kamatz'&&KAW())s='aw';
+  const soft=l.id==='sav'&&!SAV(),ls=soft?'t':l.snd,lt=soft?'t':l.tr,lh=soft?'ת':l.he,le=soft?'t':l.en;
+  const key=s==='aw'&&mode()==='he'?'o':s;
+  return {key:'s:'+l.id+':'+v.id,L:l.id,V:v.id,disp:l.ch+v.m+(v.t||''),snd:ls+'|'+key,isNew,
+    tr:v.id==='sheva'?(lt?lt+"'":"'"):(lt+TRV[s]),note:v.quick?'quick sound':'',
+    he:lh+HEV[s],en:v.id==='sheva'?(le+'uh'):(le+TRV[s])};
 }
-const POOLS={};
+let POOLS={};
+function rebuild(){POOLS={};recent=[];buildWords()}
 function pool(i){
   if(POOLS[i])return POOLS[i];
   const b=BELTS[i];let p=[];
@@ -207,6 +213,7 @@ function pool(i){
 function fresh(){return {v:1,stars:0,belts:{},items:{},set:{mode:'auto',voice:'',rate:.75,unlockAll:false}}}
 function load(){try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&d.v===1)return Object.assign(fresh(),d)}catch(e){}return fresh()}
 let P=load();
+if(!P.set.kam)P.set.kam='ah';if(P.set.sav===undefined)P.set.sav=true;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
 function BS(id){return P.belts[id]||(P.belts[id]={hist:[],earned:false,best:null})}
 const unlocked=i=>i===0||P.set.unlockAll||BS(BELTS[i-1].id).earned;
@@ -216,7 +223,7 @@ function curBelt(){let c=0;BELTS.forEach((b,i)=>{if(unlocked(i))c=i});return c}
 const hasTTS='speechSynthesis' in window;
 let voices=[];
 function lv(){if(hasTTS)voices=speechSynthesis.getVoices()||[]}
-lv();if(hasTTS)speechSynthesis.onvoiceschanged=()=>{lv();if(view==='settings')settings()};
+lv();if(hasTTS)speechSynthesis.onvoiceschanged=()=>{lv();rebuild();if(view==='settings')settings()};
 const heV=()=>voices.filter(v=>/^(he|iw)/i.test(v.lang));
 const enV=()=>voices.filter(v=>/^en/i.test(v.lang));
 function mode(){if(!hasTTS)return 'none';if(P.set.mode!=='auto')return P.set.mode;return heV().length?'he':'en'}
@@ -242,7 +249,7 @@ function pick(p){
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 function options(it,p){
   const out=[it],seen=new Set([it.snd]),take=(list,max)=>{let n=0;for(const x of shuffle(list)){if(out.length>=4||n>=max)return;if(!seen.has(x.snd)){out.push(x);seen.add(x.snd);n++}}};
-  if(!it.word){const l=LI[it.L];if(l.pair)take(p.filter(x=>x.L===l.pair&&VI[x.V].s===VI[it.V].s),1);take(p.filter(x=>x.L===it.L),2)}
+  if(!it.word){const l=LI[it.L];if(l.pair)take(p.filter(x=>x.L===l.pair&&x.V===it.V),1);take(p.filter(x=>x.L===it.L),2)}
   take(p,4);return shuffle(out);
 }
 
@@ -278,7 +285,7 @@ function examples(i){
 function beltView(i){
   view='belt';hero(false);const b=BELTS[i],bs=BS(b.id),ex=examples(i),noAudio=mode()==='none';
   app.innerHTML=`<div class="row" style="gap:14px">${beltSvg(b.c,bs.earned)}<h2>${b.name}</h2></div>
-  <div class="tip"><p>${esc(b.tip)}</p><div class="ex">${ex.map((x,k)=>`<button data-k="${k}" aria-label="Hear ${esc(x.tr)}"><span class="h heb" lang="he">${x.disp}</span><span class="t">${esc(x.tr)}</span></button>`).join('')}</div></div>
+  <div class="tip"><p>${esc(typeof b.tip==='function'?b.tip():b.tip)}</p><div class="ex">${ex.map((x,k)=>`<button data-k="${k}" aria-label="Hear ${esc(x.tr)}"><span class="h heb" lang="he">${x.disp}</span><span class="t">${esc(x.tr)}</span></button>`).join('')}</div></div>
   <div class="modes">
    <button class="mode" data-m="read"><b>Read and check</b><span>Read it out loud, then hear it and check yourself.</span></button>
    <button class="mode" data-m="listen" ${noAudio?'disabled':''}><b>Listen and tap</b><span>${noAudio?'Needs a voice on this device.':'Hear a sound, tap the one that matches.'}</span></button>
@@ -375,12 +382,19 @@ function settings(){
    <label for="md">Voice type</label><select id="md"><option value="auto">Automatic</option><option value="he">Hebrew voice</option><option value="en">English sound-out voice</option></select>
    <label for="vc">Which voice</label><select id="vc">${list.length?list.map(v=>`<option value="${esc(v.voiceURI)}" ${cv&&cv.voiceURI===v.voiceURI?'selected':''}>${esc(v.name)} (${esc(v.lang)})</option>`).join(''):'<option>None available</option>'}</select>
    <label for="rt">Speed: <span id="rv">${P.set.rate.toFixed(2)}</span></label><input type="range" id="rt" min="0.4" max="1.1" step="0.05" value="${P.set.rate}">
-   <div class="row" style="margin-top:12px"><button class="ghost" id="t1">Test בָּ</button><button class="ghost" id="t2">Test ת (sav)</button><button class="ghost" id="t3">Test שַׁבָּת</button></div></div>
+   <div class="row" style="margin-top:12px"><button class="ghost" id="t1">Test בָּ</button><button class="ghost" id="t2">Test ת</button><button class="ghost" id="t3">Test שַׁבָּת</button></div></div>
+  <div class="card"><b>Pronunciation</b>
+   <label for="kp">Kamatz (as in <span class="heb" lang="he">בָּ</span>)</label><select id="kp"><option value="ah">"ah" (Sephardi / Israeli)</option><option value="aw">"aw" (Ashkenazi)</option></select>
+   <label for="sp">Tav without a dot ת</label><select id="sp"><option value="s">"s" (Ashkenazi sav)</option><option value="t">"t" (Israeli tav)</option></select>
+   <p class="note" style="text-align:start;margin-top:10px">Hebrew device voices speak Israeli Hebrew. With "aw" kamatz, a Hebrew voice says syllables like בָּ as "bo", and whole words keep their Israeli kamatz. The written sound-out and the English sound-out voice say "aw".</p></div>
   <div class="card"><b>Belts</b><label class="toggle"><input type="checkbox" id="ua" ${P.set.unlockAll?'checked':''}> Unlock every belt</label>
    <div class="row" style="margin-top:10px"><button class="ghost" id="rs">Reset all progress</button></div></div>
   <button class="ghost" id="bk">Back to the dojo</button>`;
   $('#md').value=P.set.mode;
-  $('#md').onchange=e=>{P.set.mode=e.target.value;P.set.voice='';save();settings()};
+  $('#md').onchange=e=>{P.set.mode=e.target.value;P.set.voice='';save();rebuild();settings()};
+  $('#kp').value=P.set.kam;$('#sp').value=SAV()?'s':'t';
+  $('#kp').onchange=e=>{P.set.kam=e.target.value;save();rebuild()};
+  $('#sp').onchange=e=>{P.set.sav=e.target.value==='s';save();rebuild()};
   $('#vc').onchange=e=>{P.set.voice=e.target.value;save()};
   $('#rt').oninput=e=>{P.set.rate=+e.target.value;$('#rv').textContent=P.set.rate.toFixed(2);save()};
   $('#t1').onclick=()=>say(syl(LI.bet,VI.kamatz));$('#t2').onclick=()=>say(syl(LI.sav,VI.kamatz));$('#t3').onclick=()=>say(WORDS[19]);
@@ -400,7 +414,7 @@ $('#gear').onclick=()=>{
   d.querySelector('#gate').onsubmit=e=>{e.preventDefault();if(+inp.value===a*b){d.remove();settings()}else{d.querySelector('#gm').textContent='Not quite. Try again.';inp.value='';inp.focus()}};
 };
 $('#starN').textContent=P.stars;
-home();
+rebuild();home();
 }
 </script>
 </body>
